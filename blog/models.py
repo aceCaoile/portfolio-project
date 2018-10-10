@@ -13,6 +13,15 @@ class Blog(models.Model):
     body = models.TextField()
     image = models.ImageField(upload_to='images/')
 
+    def __str__(self):  # This is the name of the function used to display titles from the admin page
+        return self.title
+
+    def summary(self):
+        return self.body[:50]
+
+    def pub_date_pretty(self):
+        return self.pub_date.strftime('%b %e %Y')
+
 
 # Add the blog app to the settings
 

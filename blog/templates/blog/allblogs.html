@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>ace.Caoile</title>
+    <title>ace's Blogs</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -21,7 +21,7 @@
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="#">aceCaoile</a>
+          <a class="navbar-brand" href="{% url 'home' %}">aceCaoile</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -29,48 +29,30 @@
             <div class="navbar-nav ml-auto">
               <a class="nav-item nav-link" href="https://www.upwork.com/o/profiles/users/_~010a1b20b401eefb62/">upwork</a>
               <a class="nav-item nav-link" href="{% static 'Ace Caoile Resume Updated.pdf'%}">Resume</a>
-              <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+              <a class="nav-item nav-link active" href="#">Blog</a>
             </div>
           </div>
         </nav>
     </header>
 
     <main role="main">
-
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Hey, I'm Ace.</h1>
-          <p class="lead text-muted">You've reached this practice website. This website is my intro to django and bootstrap.</p>
-          <p>
-            <img class="card-img-top img-fluid" style="max-width:300px;" src="{% static 'profile.jpg' %}"/>
-          <br/><br/>
-            <a href="mailto:gabe05052011@gmail.com" class="btn btn-primary my-2">Email Me</a>
-          </p>
-        </div>
-      </section>
-
-      <div class="album py-5 bg-light">
-        <div class="container">
-
-          <div class="row">
-
-            {% for job in jobs.all %}
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src='{{ job.image.url }}'/>
-                <div class="card-body">
-                  <p class="card-text">{{ job.summary }}</p>
-                </div>
-              </div>
-            </div>
+        <div class = "container">
+            <h1 class="text-center pt-3 pb-2">Blog</h1>
+            <br/>
+            <br/>
+            <h2>Latest Posts</h2>
+            <hr />
+            {% for blog in blogs %}
+                <a href="{% url 'detail' blog.id %}"> <h3>{{ blog.title }}</h3></a>
+                {{ blog.pub_date_pretty}}
+                </br>
+                <img class="card-img-top img-fluid" style="max-width:300px;" src="{{ blog.image.url }}"/>
+                </br>
+                <p>{{ blog.summary }}</p>
+                </br>
+                </br>
             {% endfor %}
-
-
-
-          </div>
         </div>
-      </div>
-
     </main>
 
     <footer class="text-muted">
