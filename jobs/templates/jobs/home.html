@@ -21,7 +21,7 @@
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="#">aceCaoile</a>
+          <a class="navbar-brand" href="#">mhattyMejala</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -37,14 +37,15 @@
 
     <main role="main">
 
-      <section class="jumbotron text-center">
+      <section class="jumbotron text-center" style="background : white;">
         <div class="container">
-          <h1 class="jumbotron-heading">Hey, I'm Ace.</h1>
-          <p class="lead text-muted">You've reached this practice website. This website is my intro to django and bootstrap.</p>
+          <h1 class="jumbotron-heading">Hi, I'm Mhatty.</h1>
+          <p class="lead text-muted">Welcome to www.themarketingspecialist.com.<br/>
+          I offer various email marketing solutions in this website. Please feel free to look around.</p>
           <p>
-            <img class="card-img-top img-fluid" style="max-width:300px;" src="{% static 'profile.jpg' %}"/>
-          <br/><br/>
-            <a href="mailto:gabe05052011@gmail.com" class="btn btn-primary my-2">Email Me</a>
+            <img class="card-img-top img-fluid" style="max-width:700px; corner-radius: 50%;" src="{% static 'logo-01.png' %}"/>
+          <br/>
+            <a href="mailto:gabe05052011@gmail.com" class="btn btn-primary my-2">Email Us</a>
           </p>
         </div>
       </section>
@@ -55,11 +56,19 @@
           <div class="row">
 
             {% for job in jobs.all %}
-            <div class="col-md-4">
+<div class="col-md-4">
               <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src='{{ job.image.url }}'/>
+                <a href="{% url 'detail' job.id %}">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src='{{ job.image.url }}' data-holder-rendered="true">
+                </a>
                 <div class="card-body">
                   <p class="card-text">{{ job.summary }}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <h3>{{ job.title }}</h3>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
                 </div>
               </div>
             </div>
